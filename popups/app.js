@@ -1,4 +1,16 @@
-chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+function getBrowser() {
+  const userAgent = navigator.userAgent.toLowerCase();
+
+  if (userAgent.includes("firefox")) {
+    return "firefox";
+  } else if (userAgent.includes("chrome")) {
+    return "chrome";
+  } else {
+    return "unknown";
+  }
+}
+
+(getBrowser() === "firefox" ? browser:chrome).tabs.query({ active: true, currentWindow: true }, function(tabs) {
   let regex = new RegExp('^(https?:\\/\\/(www\\.)?)?(deezer\\.com|hyakanime\\.fr)');
   if (regex.test(tabs[0].url)) {
     if (tabs[0].url.includes('hyakanime.fr')) {
@@ -7,16 +19,13 @@ chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
         <button id="link">Link</button>
       </div>`
       document.getElementById('link').addEventListener('click', function() {
-        chrome.scripting.executeScript({
+        (getBrowser() === "firefox" ? browser:chrome).scripting.executeScript({
           target: { tabId: tabs[0].id },
           func: () => localStorage.token
         }).then((result) => {
           let h_token = result[0].result;
-          chrome.storage.sync.get(["token"], function(res) {
+          (getBrowser() === "firefox" ? browser:chrome).storage.sync.get(["token"], function(res) {
             fetch("https://bc-api.oriondev.fr/connections/hyakanime", { method: "POST", headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({ token: res.token, hyakanime_token: h_token }) }).then(rs => {
-              console.log(rs.json())
-              console.log(res)
-              console.log(h_token)
               alert("Hyakanime linked")
             }).catch(err => {
               console.log(err);
@@ -47,7 +56,7 @@ tokenForm.addEventListener('submit', function(event) {
   event.preventDefault();
   const token = tokenInput.value;
 
-  chrome.storage.sync.set({ 'token': token }, function() {
+  (getBrowser() === "firefox" ? browser:chrome).storage.sync.set({ 'token': token }, function() {
     alert("Token saved")
     console.log("Token saved : " + token);
   });
