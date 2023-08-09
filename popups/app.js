@@ -53,11 +53,15 @@ const tokenForm = document.getElementById('tokenForm');
 const tokenInput = document.getElementById('tokenInput');
 
 tokenForm.addEventListener('submit', function(event) {
-  event.preventDefault();
   const token = tokenInput.value;
 
   (getBrowser() === "firefox" ? browser:chrome).storage.sync.set({ 'token': token }, function() {
     alert("Token saved")
     console.log("Token saved : " + token);
   });
+  if (event.preventDefault) {
+    event.preventDefault();
+  } else {
+    event.returnValue = false;
+  }
 });
