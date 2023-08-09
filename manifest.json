@@ -1,0 +1,19 @@
+{
+  "name": "Better Connections",
+  "description": "Add better connections for Discord",
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "permissions": [ "activeTab", "storage", "tabs", "scripting" ],
+  "content_scripts": [
+    {
+      "matches": [ "*://bc-api.oriondev.fr/*" ],
+      "js": [ "content.js" ]
+    }
+  ],
+  "host_permissions": [
+    "*://*.hyakanime.fr/*"
+  ],
+  "action": {
+    "default_popup": "popups/index.html"
+  }
+}

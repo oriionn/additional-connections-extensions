@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container, #tokenForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            margin-bottom: 5px;
+        }
+
+        .inputs {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 5px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        button#link {
+            margin-bottom: 10px;
+        }
+
+        a#link {
+            text-decoration: none;
+            background: #fff;
+            color: black;
+            border: black 1px solid;
+            border-radius: 5px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="tokenForm">
+            <h1>Global</h1>
+            <label for="tokenInput">Enter your Better Connection's Token:</label>
+            <div class="inputs">
+                <input type="text" id="tokenInput">
+                <button type="submit">Save</button>
+            </div>
+        </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
