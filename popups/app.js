@@ -52,16 +52,10 @@ function getBrowser() {
 const tokenForm = document.getElementById('tokenForm');
 const tokenInput = document.getElementById('tokenInput');
 
-tokenForm.addEventListener('submit', function(event) {
-  const token = tokenInput.value;
-
-  (getBrowser() === "firefox" ? browser:chrome).storage.sync.set({ 'token': token }, function() {
-    alert("Token saved")
-    console.log("Token saved : " + token);
-  });
-  if (event.preventDefault) {
-    event.preventDefault();
-  } else {
-    event.returnValue = false;
-  }
-});
+let params = new URLSearchParams(window.location.search);
+let token = params.get("token");
+if (token) {
+  alert("Token saved")
+  console.log("Token saved : " + token);
+  (getBrowser() === "firefox" ? browser:chrome).storage.sync.set({ 'token': token });
+}

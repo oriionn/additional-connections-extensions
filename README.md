@@ -4,7 +4,7 @@ Better Connections is a simple extension for Chrome and Firefox for linking acco
 ## Tested browser
 | Browser | Tested |
 |---------|--------|
-| Chrome  | ❌      |
+| Chrome  | ✅      |
 | Brave   | ✅      |
 | Edge    | ❌      |
 | Opera   | ❌      |
