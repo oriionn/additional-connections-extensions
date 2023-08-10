@@ -8,7 +8,7 @@ Better Connections is a simple extension for Chrome and Firefox for linking acco
 | Brave   | ✅      |
 | Edge    | ❌      |
 | Opera   | ❌      |
-| Firefox | ❌      |
+| Firefox | ✅      |
 
 ## Contributors
 ![Contributors](https://contrib.rocks/image?repo=oriionn/better-connections-extensions)
