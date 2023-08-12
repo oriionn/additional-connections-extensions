@@ -83,8 +83,8 @@ function getBrowser() {
                       const firstKey = keys[0];
                       const valueRequest = objectStore.get(firstKey);
 
-                      valueRequest.onsuccess = event => {
-                        resolve(event.target.result);
+                      valueRequest.onsuccess = event =>{
+                          resolve(event.target.result);
                       };
 
                       valueRequest.onerror = reject;

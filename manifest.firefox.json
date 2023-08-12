@@ -1,6 +1,6 @@
 {
-  "name": "Better Connections",
-  "description": "Add better connections for Discord",
+  "name": "Additional Connections",
+  "description": "Additional connections for Discord",
   "manifest_version": 3,
   "version": "1.0.0",
   "permissions": [ "activeTab", "storage", "tabs", "scripting" ],

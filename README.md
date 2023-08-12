@@ -1,5 +1,5 @@
-# Better Connections Extension
-Better Connections is a simple extension for Chrome and Firefox for linking account with Better Connections.
+# Additional Connections Extension
+Additional Connections is a simple extension for Chrome and Firefox for linking account with Additional Connections.
 
 ## Tested browser
 | Browser | Tested |
@@ -11,7 +11,7 @@ Better Connections is a simple extension for Chrome and Firefox for linking acco
 | Firefox | ✅      |
 
 ## Contributors
-![Contributors](https://contrib.rocks/image?repo=oriionn/better-connections-extensions)
+![Contributors](https://contrib.rocks/image?repo=oriionn/additional-connections-extensions)
 
 ## License
 [GPL3](https://github.com/oriionn/better-connections-extensions/blob/main/LICENSE)
