@@ -11,7 +11,7 @@ function getBrowser() {
 }
 
 (getBrowser() === "firefox" ? browser:chrome).tabs.query({ active: true, currentWindow: true }, function(tabs) {
-  let regex = new RegExp('^(https?:\\/\\/(www\\.)?)?(deezer\\.com|hyakanime\\.fr|monkeytype\\.com)');
+  let regex = new RegExp('^(https?:\\/\\/(www\\.)?)?(deezer\\.com|hyakanime\\.fr|monkeytype\\.com|mangacollec\\.com)');
   if (regex.test(tabs[0].url)) {
     if (tabs[0].url.includes('hyakanime.fr')) {
       document.body.innerHTML += `<div class="container">
@@ -109,6 +109,29 @@ function getBrowser() {
               alert("Error while linking Monkeytype:\n" + err);
             })
           })
+        })
+      })
+    } else if (tabs[0].url.includes("mangacollec.com")) {
+      document.body.innerHTML += `<div class="container">
+        <h1>Mangacollec</h1>
+        <button id="link">Link</button>
+      </div>`
+      document.getElementById('link').addEventListener('click', function() {
+        (getBrowser() === "firefox" ? browser:chrome).scripting.executeScript({
+          target: { tabId: tabs[0].id },
+          func: () => JSON.parse(localStorage["mangacollec-token"]).access_token
+        }).then((result) => {
+          let m_token = result[0].result;
+          (getBrowser() === "firefox" ? browser:chrome).storage.sync.get(["token"], function(res) {
+            fetch("https://bc-api.oriondev.fr/connections/mangacollec", { method: "POST", headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }, body: JSON.stringify({ token: res.token, mangacollec_token: m_token }) }).then(rs => {
+              alert("Mangacollec linked")
+            }).catch(err => {
+              console.log(err);
+              alert("Error while linking Mangacollec:\n" + err);
+            })
+          })
+        }).catch(err => {
+          alert("You need to be logged in to mangacollec.com");
         })
       })
     }
